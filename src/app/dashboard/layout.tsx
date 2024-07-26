@@ -15,7 +15,9 @@ const Layout = ({ children }: Props) => {
       )}
     >
       <DashboardSidebar />
-      <div className="overflow-y-scroll flex-1">{children}</div>
+      <div className="overflow-y-scroll hide-scrollbar flex-1 p-4 bg-[#e9e8f7] dark:bg-slate-900">
+        {children}
+      </div>
     </div>
   );
 };

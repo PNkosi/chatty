@@ -89,7 +89,7 @@ export const DesktopSidebar = ({
     <>
       <motion.div
         className={cn(
-          "h-full px-4 py-4 hidden  md:flex md:flex-col bg-neutral-100 dark:bg-background w-[300px] flex-shrink-0",
+          "h-full px-4 py-4 hidden  md:flex md:flex-col bg-[#6956FB] w-[300px] flex-shrink-0 rounded-md",
           className
         )}
         animate={{
@@ -115,13 +115,13 @@ export const MobileSidebar = ({
     <>
       <div
         className={cn(
-          "h-10 px-4 py-4 flex flex-row md:hidden  items-center justify-between bg-neutral-100 dark:bg-background w-full"
+          "h-10 px-4 py-4 flex flex-row md:hidden  items-center justify-between bg-[#6956FB] w-full"
         )}
         {...props}
       >
         <div className="flex justify-end z-20 w-full">
           <MdMenu
-            className="text-foreground dark:text-neutral-200"
+            className="text-foreground dark:text-slate-200"
             onClick={() => setOpen(!open)}
           />
         </div>
@@ -181,7 +181,7 @@ export const SidebarLink = ({
           display: animate ? (open ? "inline-block" : "none") : "inline-block",
           opacity: animate ? (open ? 1 : 0) : 1,
         }}
-        className="text-foreground dark:text-neutral-200 text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
+        className="text-slate-200 text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
       >
         {link.label}
       </motion.span>

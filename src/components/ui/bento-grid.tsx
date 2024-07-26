@@ -1,6 +1,9 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { format } from "date-fns";
+import { IconMessage } from "@tabler/icons-react";
+import Link from "next/link";
+import { useUser } from "@clerk/nextjs";
 
 export const BentoGrid = ({
   className,
@@ -27,13 +30,17 @@ export const BentoGridItem = ({
   date,
   header,
   imageURL,
+  id,
 }: {
   className?: string;
   title?: string | React.ReactNode;
   date: number;
   header?: React.ReactNode;
   imageURL: string;
+  id: string;
 }) => {
+  const { user } = useUser();
+
   return (
     <div
       className={cn(
@@ -56,6 +63,11 @@ export const BentoGridItem = ({
         <div className="font-sans font-normal text-neutral-600 text-xs dark:text-neutral-300">
           <span className="mr-2">Joined: </span>
           {format(new Date(date), "PPP")}
+        </div>
+        <div className="mt-4">
+          <Link href={`/dashboard/chats/${id}`} className="">
+            <IconMessage />
+          </Link>
         </div>
       </div>
     </div>
