@@ -4,11 +4,9 @@ import { User } from "@clerk/nextjs/server";
 import { IconSend } from "@tabler/icons-react";
 import { useMutation, useQuery } from "convex/react";
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { api } from "../../../../../convex/_generated/api";
 import { useUser } from "@clerk/nextjs";
-import { cn } from "@/lib/utils";
-import { revalidatePath } from "next/cache";
 
 type Props = {
   params: {
@@ -21,6 +19,7 @@ const Page = ({ params }: Props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [message, setMessage] = useState("");
   const { user } = useUser();
+  const messagesEndRef = useRef<HTMLDivElement | null>(null); // Ref for scrolling
 
   useEffect(() => {
     fetch(`/api/clerk/user?id=${params.id}`)
@@ -52,6 +51,11 @@ const Page = ({ params }: Props) => {
     });
     setMessage("");
   };
+
+  // Scroll to bottom when messages change
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   if (isLoading) return <p>Loading...</p>;
   if (!data) return <p>No users</p>;
@@ -106,6 +110,7 @@ const Page = ({ params }: Props) => {
               </div>
             );
           })}
+          <div ref={messagesEndRef} /> {/* Scroll target */}
         </div>
         <div className="absolute bottom-4 w-[calc(100%-32px)]">
           <div className="border-2 border-[#6956FB] rounded-md flex items-center pl-4">
