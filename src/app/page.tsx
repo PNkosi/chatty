@@ -4,9 +4,8 @@ import UsersList from "./dashboard/_components/usersList";
 
 export default function Home() {
   return (
-    <main>
+    <main className="space-y-8">
       <Hero />
-
       <UsersList />
     </main>
   );

@@ -12,6 +12,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import ModeToggle from "./mode-toggle";
+import { IconLayout } from "@tabler/icons-react";
 
 type Props = {};
 
@@ -26,10 +27,13 @@ const Navabr = (props: Props) => {
           chatty
         </div>
 
-        <div className="md:flex items-center gap-8">
-          <div className="hidden md:flex items-center gap-8">
+        <div className="flex items-center gap-8">
+          <div className="flex items-center gap-8">
             <SignedIn>
-              <Link href={"/dashboard"}>Dashboard</Link>
+              <Link href={"/dashboard"}>
+                <IconLayout className="md:hidden" />
+                <span className="hidden md:inline-block">Dashboard</span>
+              </Link>
               <UserButton />
             </SignedIn>
             <SignedOut>
