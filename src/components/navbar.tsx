@@ -20,7 +20,7 @@ const Navabr = (props: Props) => {
   const { user, isLoaded, isSignedIn } = useUser();
 
   return (
-    <nav className="bg-background sticky top-0">
+    <nav className="bg-background sticky top-0 z-[9999]">
       <div className="max-w-3xl mx-auto flex items-center justify-between h-[10vh] px-6">
         <div className="font-bold flex items-center gap-2">
           <Image src="/logo.svg" alt="logo" width={30} height={30} />
